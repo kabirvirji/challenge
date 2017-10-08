@@ -1,23 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-// import Contacts from 'react-native-contacts'
+import Contacts from 'react-native-contacts'
 
 export default class App extends React.Component {
   render() {
 
     // issues with react-native-contacts
+    // undefined is not an object (evaluating '_reactNativeContacts2.default.getAll')
 
-    // const contacts = {
-    //   "Kabir":"Virji",
-    // }
+    const contacts = {
+      "Kabir":"Virji",
+    }
 
-    // Contacts.getAll((err, contacts) => {
-    //   if(err === 'denied'){
-    //     // error
-    //   } else {
-    //     // contacts returned in []
-    //   }
-    // })
+    Contacts.getAll((err, contacts) => {
+      if(err === 'denied'){
+        // error
+      } else {
+        // contacts returned in []
+      }
+    })
 
     return (
       <View style={styles.container}>
