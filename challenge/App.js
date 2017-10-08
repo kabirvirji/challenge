@@ -18,7 +18,9 @@ export default class App extends Component {
     // undefined is not an object (evaluating '_reactNativeContacts2.default.getAll')
 
     // need to do something in xcode maybe
+      // can't figure out how to open this xcode projects
     // tried linking and that messed everything up
+      // linking doesn't work
     // might need to degrade npm version
 
     const contacts = {
