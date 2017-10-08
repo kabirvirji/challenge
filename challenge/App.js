@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import Contacts from 'react-native-contacts'
+import CheckBox from 'react-native-checkbox';
 
 export default class App extends Component {
 
@@ -34,14 +35,20 @@ export default class App extends Component {
     //     // contacts returned in []
     //   }
     // })
+    let spinner = true;
 
     // when contacts finish loading
-    setTimeout(() => { this.setState({spinner: false}); }, 5000);
+    // setTimeout(() => { this.setState({spinner: false}); }, 5000);
 
     return (
-      <View style={styles.container}>
+      <View style={styles.box}>
+        <CheckBox
+          label=''
+          checked={false}
+          onChange={() => spinner = false}
+        />
         <ActivityIndicator
-          animating={this.spinner}
+          animating={spinner}
         />
         <Text>Kabir Virji</Text>
       </View>
@@ -56,4 +63,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  box: {
+    // flex: 1,
+    // flexDirection: 'column',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+    // width: 50,
+    // height: 50,
+    // backgroundColor: 'skyblue',
+    backgroundColor:'#fff',
+    marginTop: 50,
+    paddingTop: 30,
+    paddingBottom: 10,
+    flexDirection:'row',
+    justifyContent: 'center',
+  }
 });
