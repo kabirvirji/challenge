@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator, Button } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Button, TextInput, Alert } from 'react-native';
 import Contacts from 'react-native-contacts'
 // import CheckBox from 'react-native-checkbox';
 import { CheckBox } from 'react-native-elements'
@@ -13,6 +13,8 @@ export default class App extends Component {
       spinner: true,
       checked: false,
       contactBackground: '#fff',
+      contactName: 'blank',
+      contactNumber: 'blank',
     };
   }
 
@@ -42,28 +44,59 @@ export default class App extends Component {
 
     // when contacts finish loading
     // setTimeout(() => { this.setState({spinner: false}); }, 5000);
+    function errorCheck(name, number) {
+      if (name === 'blank'){
+        console.warn("name")
+      }
+      if (number == 'blank'){
+        console.warn("number")
+      }
+    }
 
     return (
-      <View style={[styles.box, {backgroundColor: this.state.contactBackground}]}>
-        <CheckBox
-          // Title will be contact information
-          title='Kabir Virji #4'
-          onPress={() => {
-            this.setState({checked: !this.state.checked})
-            if (this.state.contactBackground === '#fff') {
-              this.setState({contactBackground: 'skyblue'})
-            } else {
-              this.setState({contactBackground: '#fff'})
-            }
-          }}
-          checked={this.state.checked} 
-          checkedColor={'green'}
-          uncheckedColor={'red'}
-        />
+      <View>
+        <View style={[styles.box, {backgroundColor: this.state.contactBackground}]}>
+          <CheckBox
+            // Title will be contact information
+            title='Kabir Virji #4'
+            onPress={() => {
+              this.setState({checked: !this.state.checked})
+              if (this.state.contactBackground === '#fff') {
+                this.setState({contactBackground: 'skyblue'})
+              } else {
+                this.setState({contactBackground: '#fff'})
+              }
+            }}
+            checked={this.state.checked} 
+            checkedColor={'green'}
+            uncheckedColor={'red'}
+          />
+        </View>
         <ActivityIndicator
           animating={spinner}
         />
         <Text>Kabir Virji</Text>
+        <View>
+          <TextInput
+            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.contactName}
+            placeholder={"contact name"}
+          />
+          <TextInput
+            style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+            onChangeText={(text) => this.setState({text})}
+            value={this.state.contactNumber}
+            placeholder={"contact number"}
+            keyboardType={'numeric'}
+          />
+          <Button
+            onPress={errorCheck(this.state.contactName, this.state.contactNumber)}
+            // need to error check name and number
+            title="Create New Contact"
+            color="#841584"
+          />
+        </View>
       </View>
     );
   }
