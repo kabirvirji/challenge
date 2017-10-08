@@ -11,7 +11,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       spinner: true,
-      checked: false
+      checked: false,
+      contactBackground: '#fff',
     };
   }
 
@@ -43,14 +44,17 @@ export default class App extends Component {
     // setTimeout(() => { this.setState({spinner: false}); }, 5000);
 
     return (
-      <View style={styles.box}>
+      <View style={[styles.box, {backgroundColor: this.state.contactBackground}]}>
         <CheckBox
-          // label=''
-          // checked={false}
-          // onChange={(checked) => console.warn("checkbox works", checked)}
-          title='Kabir Virji'
+          // Title will be contact information
+          title='Kabir Virji #4'
           onPress={() => {
             this.setState({checked: !this.state.checked})
+            if (this.state.contactBackground === '#fff') {
+              this.setState({contactBackground: 'skyblue'})
+            } else {
+              this.setState({contactBackground: '#fff'})
+            }
           }}
           checked={this.state.checked} 
           checkedColor={'green'}
@@ -68,7 +72,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
