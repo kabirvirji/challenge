@@ -1,8 +1,17 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import Contacts from 'react-native-contacts'
 
-export default class App extends React.Component {
+export default class App extends Component {
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      spinner: true
+    };
+  }
+
   render() {
 
     // issues with react-native-contacts
@@ -10,22 +19,29 @@ export default class App extends React.Component {
 
     // need to do something in xcode maybe
     // tried linking and that messed everything up
+    // might need to degrade npm version
 
     const contacts = {
       "Kabir":"Virji",
     }
 
-    Contacts.getAll((err, contacts) => {
-      if(err === 'denied'){
-        // error
-      } else {
-        // contacts returned in []
-      }
-    })
+    // Contacts.getAll((err, contacts) => {
+    //   if(err === 'denied'){
+    //     // error
+    //   } else {
+    //     // contacts returned in []
+    //   }
+    // })
+
+    // when contacts finish loading
+    setTimeout(() => { this.setState({spinner: false}); }, 5000);
 
     return (
       <View style={styles.container}>
-        <Text>Kabir</Text>
+        <ActivityIndicator
+          animating={this.spinner}
+        />
+        <Text>Kabir Virji</Text>
       </View>
     );
   }
