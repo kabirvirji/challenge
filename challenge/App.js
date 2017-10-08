@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Button } from 'react-native';
 import Contacts from 'react-native-contacts'
 // import CheckBox from 'react-native-checkbox';
 import { CheckBox } from 'react-native-elements'
@@ -48,9 +48,11 @@ export default class App extends Component {
           // label=''
           // checked={false}
           // onChange={(checked) => console.warn("checkbox works", checked)}
-          title='Click Here'
-          checked={this.state.checked}
-          onPress={() => {console.warn(this.state.checked)}}
+          title='Kabir Virji'
+          onPress={() => {
+            this.setState({checked: !this.state.checked})
+          }}
+          checked={this.state.checked} 
           checkedColor={'green'}
           uncheckedColor={'red'}
         />
