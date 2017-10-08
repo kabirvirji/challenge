@@ -8,6 +8,9 @@ export default class App extends React.Component {
     // issues with react-native-contacts
     // undefined is not an object (evaluating '_reactNativeContacts2.default.getAll')
 
+    // need to do something in xcode maybe
+    // tried linking and that messed everything up
+
     const contacts = {
       "Kabir":"Virji",
     }
