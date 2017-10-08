@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import Contacts from 'react-native-contacts'
-import CheckBox from 'react-native-checkbox';
+// import CheckBox from 'react-native-checkbox';
+import { CheckBox } from 'react-native-elements'
 
 export default class App extends Component {
 
@@ -9,7 +10,8 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      spinner: true
+      spinner: true,
+      checked: false
     };
   }
 
@@ -43,9 +45,14 @@ export default class App extends Component {
     return (
       <View style={styles.box}>
         <CheckBox
-          label=''
-          checked={false}
-          onChange={() => spinner = false}
+          // label=''
+          // checked={false}
+          // onChange={(checked) => console.warn("checkbox works", checked)}
+          title='Click Here'
+          checked={this.state.checked}
+          onPress={() => {console.warn(this.state.checked)}}
+          checkedColor={'green'}
+          uncheckedColor={'red'}
         />
         <ActivityIndicator
           animating={spinner}
